@@ -1,0 +1,6 @@
+Modal(popup) y
+select para los niveles y
+contador tiempo real *
+clic en respuestas, cambia de pregunta *
+mensaje de felicitación al terminar *
+volver a empezar*
