@@ -1,49 +1,80 @@
 import React, { useState, useEffect } from 'react';
 
-// Función para mezclar las respuestas
 const shuffleArray = (array) => {
   return array.sort(() => Math.random() - 0.5);
 };
 
-const QuestionCard = ({ pregunta, respuestas, onAnswer, esCorrecta }) => {
-  // Estado para las respuestas mezcladas
+const QuestionCard = ({
+  pregunta,
+  respuestas,
+  onAnswer,
+  esCorrecta, // Esta prop debería ser actualizada por el componente padre con cada respuesta
+  nivelCompletado,
+}) => {
   const [shuffledAnswers, setShuffledAnswers] = useState([]);
-
-  // Estado para controlar la visualización del modal
   const [showModal, setShowModal] = useState(false);
+  const [localRespuestaCorrecta, setLocalRespuestaCorrecta] = useState(0);
+  const [localRespuestaIncorrecta, setLocalRespuestaIncorrecta] = useState(0);
 
-  // Efecto para mezclar las respuestas cada vez que cambian la pregunta o las respuestas
+  // Mezclar respuestas cuando la pregunta cambie
   useEffect(() => {
     setShuffledAnswers(shuffleArray([...respuestas]));
   }, [pregunta, respuestas]);
 
-  const handleAnswer = (respuesta) => {
+  // Reiniciar los contadores cuando el nivel esté completo
+  useEffect(() => {
+    if (nivelCompletado) {
+      setLocalRespuestaCorrecta(0);
+      setLocalRespuestaIncorrecta(0);
+    }
+  }, [nivelCompletado]);
+
+  // Actualizar los contadores locales basados en la corrección de la respuesta
+  useEffect(() => {
+    // Solo actualiza los contadores si la respuesta ha sido dada (esCorrecta no es null)
+    if (esCorrecta !== null) {
+      if (esCorrecta) {
+        setLocalRespuestaCorrecta(prev => prev + 1);
+      } else {
+        setLocalRespuestaIncorrecta(prev => prev + 1);
+      }
+    }
+  }, [esCorrecta]);
+
+  const handleAnswerClick = (respuesta) => {
     onAnswer(respuesta);
     setShowModal(true);
 
-    // Ocultar el modal después de 2 segundos
+    // No necesitas comprobar aquí si la respuesta es correcta; eso se maneja en el componente padre.
+
+    // Cerrar el modal después de un tiempo
     setTimeout(() => {
       setShowModal(false);
-    }, 2000); 
+    }, 2000);
   };
 
   return (
-    <div className="card mx-auto" style={{ width: '25rem', height: '12rem', background:"#708090"}}>
+    <div className="card mx-auto" style={{ width: '25rem', background: "#708090"}}>
       <h5 className="card-title">Preguntas</h5>
       <div className="card-body text-center">
         <p className="title">{pregunta}</p>
-        {/* Usar shuffledAnswers en lugar de respuestas para mostrar los botones */}
         {shuffledAnswers.map((respuesta, index) => (
           <button
             style={{ margin: '5px' }}
             type="button"
             className="btn btn-primary my-2"
             key={index}
-            onClick={() => handleAnswer(respuesta)}
+            onClick={() => handleAnswerClick(respuesta)}
           >
             {respuesta}
           </button>
         ))}
+
+        {/* Contadores de respuestas */}
+        <div className="counters">
+          <p>Respuestas correctas: {localRespuestaCorrecta}</p>
+          <p>Respuestas incorrectas: {localRespuestaIncorrecta}</p>
+        </div>
       </div>
 
       {/* Modal para mostrar si la respuesta es correcta o incorrecta */}
@@ -54,12 +85,11 @@ const QuestionCard = ({ pregunta, respuestas, onAnswer, esCorrecta }) => {
               <div className="modal-header">
                 <h5 className="modal-title">Respuesta</h5>
                 <button type="button" className="close" onClick={() => setShowModal(false)}>
-                  <span>&times;</span>
+                  <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div className="modal-body">
-                {esCorrecta === true && <p>Correcto</p>}
-                {esCorrecta === false && <p>Incorrecto</p>}
+                {esCorrecta ? <p>¡Correcto!</p> : <p>Incorrecto</p>}
               </div>
               <div className="modal-footer">
                 <button type="button" className="btn btn-secondary" onClick={() => setShowModal(false)}>Cerrar</button>
