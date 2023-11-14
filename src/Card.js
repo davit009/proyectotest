@@ -45,7 +45,7 @@ const QuestionCard = ({
     onAnswer(respuesta);
     setShowModal(true);
 
-    // No necesitas comprobar aquí si la respuesta es correcta; eso se maneja en el componente padre.
+    
 
     // Cerrar el modal después de un tiempo
     setTimeout(() => {
