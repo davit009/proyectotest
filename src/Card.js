@@ -79,7 +79,7 @@ const QuestionCard = ({
 
       {/* Modal para mostrar si la respuesta es correcta o incorrecta */}
       {showModal && (
-        <div className="modal show" tabIndex="-1" role="dialog" style={{ display: 'block' }}>
+        <div className="modal show" tabIndex="-1" role="dialog" style={{marginTop:'100px', display: 'block' }}>
           <div className="modal-dialog" role="document">
             <div className="modal-content">
               <div className="modal-header">
@@ -89,11 +89,9 @@ const QuestionCard = ({
                 </button>
               </div>
               <div className="modal-body">
-                {esCorrecta ? <p>¡Correcto!</p> : <p>Incorrecto</p>}
+                {esCorrecta ? <p style={{background:'#1AF010', color:`white`}}>¡Correcto!</p> : <p style={{background:`#F32323` , color:`white`}}>Incorrecto</p>}
               </div>
-              <div className="modal-footer">
-                <button type="button" className="btn btn-secondary" onClick={() => setShowModal(false)}>Cerrar</button>
-              </div>
+              
             </div>
           </div>
         </div>

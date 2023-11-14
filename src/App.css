@@ -36,3 +36,18 @@
     transform: rotate(360deg);
   }
 }
+
+.boton1{
+  background-color: #846075;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin:5px;
+}
+.App {
+  background-color: #C0BCB5; /* Usa el color que prefieras */
+  min-height: 100vh; /* Esto asegura que el fondo cubra toda la altura de la ventana */
+  margin: 0;
+  padding: 0;
+}
+

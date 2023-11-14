@@ -46,10 +46,10 @@ function App() {
     setTimeout(() => {
       if (currentQuestionIndex < shuffledQuestions.length - 1) {
         setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
-        setNivelCompletado(false); // No hemos completado el nivel aún
+        setNivelCompletado(false); 
       } else {
-        setJuegoTerminado(true); // El juego ha terminado
-        setNivelCompletado(true); // Hemos completado el nivel
+        setJuegoTerminado(true); 
+        setNivelCompletado(true); 
       }
       setEsCorrecta(null);
     }, 2000);
@@ -60,7 +60,7 @@ function App() {
     setShuffledQuestions([]);
     setCurrentQuestionIndex(0);
     setEsCorrecta(null);
-    setJuegoTerminado(false); // Restablecer el juego
+    setJuegoTerminado(false); 
   };
 
   const margenes = {
@@ -68,13 +68,14 @@ function App() {
   };
 
   return (
+    
     <div className="App" style={margenes}>
       {juegoTerminado ? (
-        // Mostrar mensaje de fin del juego y botón de reinicio
+        
         <div>
           <p>¡Fin del juego! Gracias por jugar.</p>
           
-          <button onClick={resetGame}>Reiniciar Juego</button>
+          <button onClick={resetGame}>Volver a Empezar</button>
         </div>
       ) : dificultad && shuffledQuestions.length > 0 ? (
         // Mostrar el juego si la dificultad está seleccionada y las preguntas están cargadas
@@ -90,12 +91,12 @@ function App() {
           
         </>
       ) : (
-        // Mostrar interfaz de selección de dificultad
+        // selección de dificultad
         <div className="mb-3" style={margenes}>
           <h2>Selecciona el nivel de dificultad:</h2>
-          <button onClick={() => startGame('facil')}>Fácil</button>
-          <button onClick={() => startGame('media')}>Media</button>
-          <button onClick={() => startGame('dificil')}>Difícil</button>
+          <button class="boton1" onClick={() => startGame('facil')}>Fácil</button>
+          <button class="boton1" onClick={() => startGame('media')}>Media</button>
+          <button class="boton1" onClick={() => startGame('dificil')}>Difícil</button>
           <p>Respuestas correctas: {respuestaCorrecta}</p>
           <p>Respuestas incorrectas: {respuestaIncorrecta}</p>
         </div>
