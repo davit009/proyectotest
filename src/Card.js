@@ -54,7 +54,7 @@ const QuestionCard = ({
   };
 
   return (
-    <div className="card mx-auto" style={{ width: '25rem', background: "#708090"}}>
+    <div className="card mx-auto" style={{ width: '25rem', background: "#445069"}}>
       <h5 className="card-title">Preguntas</h5>
       <div className="card-body text-center">
         <p className="title">{pregunta}</p>
@@ -73,29 +73,28 @@ const QuestionCard = ({
         {/* Contadores de respuestas */}
         <div className="counters">
           <p id="pCorrect">Respuestas correctas: {localRespuestaCorrecta}</p>
-          <p id="pIncorrect ">Respuestas incorrectas: {localRespuestaIncorrecta}</p>
+          <p id="pIncorrect">Respuestas incorrectas: {localRespuestaIncorrecta}</p>
         </div>
       </div>
 
-      {/* Modal para mostrar si la respuesta es correcta o incorrecta */}
       {showModal && (
-        <div className="modal show" tabIndex="-1" role="dialog" style={{marginTop:'100px', display: 'block' }}>
-          <div className="modal-dialog" role="document">
-            <div className="modal-content">
-              <div className="modal-header">
-                <h5 className="modal-title">Respuesta</h5>
-                <button type="button" className="close" onClick={() => setShowModal(false)}>
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div className="modal-body">
-                {esCorrecta ? <p style={{background:'#1AF010', color:`white`}}>¡Correcto!</p> : <p style={{background:`#F32323` , color:`white`}}>Incorrecto</p>}
-              </div>
-              
-            </div>
-          </div>
+  <div className="modal show" tabIndex="-1" role="dialog" style={{ marginTop: '100px', display: 'block' }}>
+    <div className="modal-dialog" role="document">
+      <div className={`modal-content ${esCorrecta ? 'bg-success' : 'bg-danger'}`}>
+        <div className="modal-header">
+          <h5 className="modal-title">Respuesta</h5>
+          <button type="button" className="close" onClick={() => setShowModal(false)}>
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-      )}
+        <div className="modal-body">
+          {esCorrecta ? <p>¡Correcto!</p> : <p>Incorrecto</p>}
+        </div>
+      </div>
+    </div>
+  </div>
+)}
+
     </div>
   );
 };

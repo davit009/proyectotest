@@ -42,29 +42,36 @@
 }
 
 .boton1{
-  background-color: #846075;
+  background-color: #5B9A8B;
   color: white;
   padding: 10px 20px;
   border-radius: 5px;
   margin:5px;
 }
 .App {
-  background-color: #C0BCB5; 
+  background-color: #F7E987; 
   min-height: 100vh; 
   margin: 0;
   padding: 0;
 }
 #pCorrect { 
-  color:green;
+  color: #13F70B;
   font-size: 20px;
   font-style: Comic Sans MS;
   
 
 }
 #pIncorrect{
-color:red;
+color:#F70606;
 font-size:20px;
 }
 p{
 font-size: 22px;
+color: black;
+}
+h2{
+color: white;
+}
+.fs{
+color: white;
 }

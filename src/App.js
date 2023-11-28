@@ -106,7 +106,7 @@ function App() {
       ) : (
         // Sección para la selección de dificultad y estadísticas
         <div className="mb-3" style={margenes}>
-          <h2>Selecciona el nivel de dificultad:</h2>
+          <h2 id="fs">Selecciona el nivel de dificultad:</h2>
           <button className="boton1" onClick={() => startGame('facil')}>Fácil</button>
           <button className="boton1" onClick={() => startGame('media')}>Media</button>
           <button className="boton1" onClick={() => startGame('dificil')}>Difícil</button>
