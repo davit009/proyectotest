@@ -72,8 +72,8 @@ const QuestionCard = ({
 
         {/* Contadores de respuestas */}
         <div className="counters">
-          <p>Respuestas correctas: {localRespuestaCorrecta}</p>
-          <p>Respuestas incorrectas: {localRespuestaIncorrecta}</p>
+          <p id="pCorrect">Respuestas correctas: {localRespuestaCorrecta}</p>
+          <p id="pIncorrect ">Respuestas incorrectas: {localRespuestaIncorrecta}</p>
         </div>
       </div>
 

@@ -6,6 +6,10 @@
   height: 40vmin;
   pointer-events: none;
 }
+@font-face {
+  font-family: "Comic Sans MS";
+  src: url("https://fonts.googleapis.com/css2?family=Comic+Sans+MS&display=swap");
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -45,9 +49,22 @@
   margin:5px;
 }
 .App {
-  background-color: #C0BCB5; /* Usa el color que prefieras */
-  min-height: 100vh; /* Esto asegura que el fondo cubra toda la altura de la ventana */
+  background-color: #C0BCB5; 
+  min-height: 100vh; 
   margin: 0;
   padding: 0;
 }
+#pCorrect { 
+  color:green;
+  font-size: 20px;
+  font-style: Comic Sans MS;
+  
 
+}
+#pIncorrect{
+color:red;
+font-size:20px;
+}
+p{
+font-size: 22px;
+}
